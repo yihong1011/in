@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>11/15（日）桃園一日輕旅行</title>
+
+  <!-- Google Fonts: Cormorant Garamond, Noto Serif TC, Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sageCanvas: '#EFECE6',
+            ivoryPaper: '#FAF8F3',
+            ivoryInner: '#FDFBF7',
+            champagne: '#C6B07E',
+            champagneDeep: '#98804E',
+            timelineLine: '#D8CEB8',
+            cloverSage: '#7E9B81',
+            cloverMint: '#A5C0A7',
+            cloverOlive: '#4F6B54',
+            selectedSage: '#58705C',
+            inkPrimary: '#2C312B',
+            inkSecondary: '#686F66'
+          },
+          fontFamily: {
+            garamond: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            serifTC: ['"Noto Serif TC"', 'serif'],
+            sansTC: ['"Noto Sans TC"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* ==========================================================================
+       奢華文具棉紙美學與全域變數
+       ========================================================================== */
+    :root {
+      --bg-canvas: #EFECE6;
+      --surface-ivory: #FAF8F3;
+      --surface-inner: #FDFBF7;
+      --gold-champagne: #C6B07E;
+      --gold-deep: #98804E;
+      --clover-sage: #7E9B81;
+      --clover-mint: #A5C0A7;
+      --clover-olive: #4F6B54;
+      --selected-sage: #58705C;
+      --ink-primary: #2C312B;
+      --ink-secondary: #686F66;
+      --timeline-line: #D8CEB8;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      margin: 0;
+      padding: 16px 14px 36px;
+      min-height: 100vh;
+      background-color: var(--bg-canvas);
+      background-image:
+        radial-gradient(circle at 15% 10%, rgba(165, 192, 167, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 85% 90%, rgba(198, 176, 126, 0.18) 0%, transparent 48%);
+      color: var(--ink-primary);
+      font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* 外層置中容器（手機最佳閱讀寬度 max-width: 460px） */
+    .page-wrapper {
+      max-width: 460px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* ==========================================================================
+       頂部操作列（純淨截圖預覽模式下自動隱藏）
+       ========================================================================== */
+    .top-action-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+      transition: opacity 0.28s ease, transform 0.28s ease;
+    }
+
+    .screenshot-trigger-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 13px;
+      border-radius: 9999px;
+      background-color: rgba(250, 248, 243, 0.9);
+      border: 1px solid rgba(198, 176, 126, 0.65);
+      color: var(--gold-deep);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      box-shadow: 0 2px 8px rgba(44, 49, 43, 0.04);
+      cursor: pointer;
+      transition: all 0.22s ease;
+    }
+
+    .screenshot-trigger-btn:hover {
+      background-color: #FFFFFF;
+      border-color: var(--gold-champagne);
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       主行程棉紙卡片容器
+       ========================================================================== */
+    .ivory-stationery-card {
+      position: relative;
+      width: 100%;
+      background-color: var(--surface-ivory);
+      border-radius: 20px;
+      border: 1px solid rgba(198, 176, 126, 0.45);
+      box-shadow:
+        0 20px 46px -14px rgba(44, 49, 43, 0.1),
+        0 6px 18px -4px rgba(198, 176, 126, 0.16);
+      overflow: hidden;
+      transition: box-shadow 0.35s ease, transform 0.35s ease;
+    }
+
+    /* 內嵌雙層香檳金極細框線（Double Hairline Border in Champagne Gold） */
+    .double-gold-frame-outer {
+      position: absolute;
+      inset: 8px;
+      border-radius: 14px;
+      border: 1px solid rgba(198, 176, 126, 0.62);
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    .double-gold-frame-inner {
+      position: absolute;
+      inset: 12px;
+      border-radius: 11px;
+      border: 0.75px solid rgba(198, 176, 126, 0.35);
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    /* 棉紙纖維噪點肌理疊加層 */
+    .cotton-grain-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 15;
+      opacity: 0.036;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)'/%3E%3C/svg%3E");
+    }
+
+    /* 水彩層疊柔化效果 */
+    .watercolor-wash {
+      mix-blend-mode: multiply;
+    }
+
+    @keyframes cloverBreath {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-2px) scale(1.01); }
+    }
+
+    .clover-float {
+      animation: cloverBreath 7s ease-in-out infinite;
+    }
+
+    /* 時間數字襯線字體 */
+    .serif-time {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      font-variant-numeric: lining-nums;
+    }
+
+    /* 時間軸垂直連接細線 */
+    .timeline-connector {
+      position: absolute;
+      left: 5.5px;
+      top: 10px;
+      bottom: 10px;
+      width: 1px;
+      background-color: var(--timeline-line);
+    }
+
+    /* ==========================================================================
+       互動式午餐鍋物二選一卡片
+       ========================================================================== */
+    .lunch-choice-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+      height: 100%;
+      padding: 11px 11px;
+      border-radius: 12px;
+      background-color: var(--surface-inner);
+      border: 1px solid rgba(198, 176, 126, 0.58);
+      text-align: left;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(44, 49, 43, 0.03);
+      transition:
+        background-color 0.28s ease,
+        border-color 0.28s ease,
+        opacity 0.28s ease,
+        transform 0.24s ease,
+        box-shadow 0.28s ease;
+    }
+
+    .lunch-choice-card:hover {
+      border-color: var(--gold-champagne);
+      background-color: #FFFFFF;
+      transform: translateY(-1px);
+    }
+
+    .lunch-card-title {
+      font-family: "Noto Serif TC", serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: var(--ink-primary);
+      transition: color 0.25s ease;
+    }
+
+    .lunch-card-subtitle {
+      margin-top: 4px;
+      font-size: 11px;
+      line-height: 1.45;
+      color: var(--ink-secondary);
+      transition: color 0.25s ease;
+    }
+
+    .lunch-check-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border-radius: 9999px;
+      border: 1px solid rgba(198, 176, 126, 0.75);
+      color: transparent;
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+
+    /* 選中狀態：深鼠尾草綠 #58705C、香檳金邊框 #C6B07E、象牙白主標與柔和奶油副標 */
+    .lunch-choice-card.is-selected {
+      background-color: #58705C;
+      border-color: #C6B07E;
+      box-shadow: 0 8px 18px -6px rgba(88, 112, 92, 0.45);
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .lunch-choice-card.is-selected .lunch-card-title {
+      color: #FAF8F3;
+    }
+
+    .lunch-choice-card.is-selected .lunch-card-subtitle {
+      color: rgba(250, 248, 243, 0.88);
+    }
+
+    .lunch-choice-card.is-selected .lunch-check-badge {
+      background-color: rgba(250, 248, 243, 0.2);
+      border-color: #FAF8F3;
+      color: #FAF8F3;
+    }
+
+    /* 未選中狀態（當另一張卡片被選中時淡化至 opacity: 0.55） */
+    .lunch-choice-card.is-dimmed {
+      opacity: 0.55;
+    }
+
+    /* ==========================================================================
+       午後天候路線分段膠囊切換器
+       ========================================================================== */
+    .route-switcher-pill {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      padding: 4px;
+      border-radius: 9999px;
+      background-color: #EFECE6;
+      border: 1px solid rgba(198, 176, 126, 0.45);
+      transition: all 0.25s ease;
+    }
+
+    .route-tab-btn {
+      padding: 7px 8px;
+      border-radius: 9999px;
+      font-size: 11.5px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--ink-secondary);
+      background-color: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .route-tab-btn:hover:not(.active) {
+      color: var(--ink-primary);
+    }
+
+    .route-tab-btn.active {
+      background-color: var(--surface-inner);
+      color: var(--clover-olive);
+      border-color: rgba(198, 176, 126, 0.7);
+      box-shadow: 0 2px 6px rgba(44, 49, 43, 0.06);
+      font-weight: 600;
+    }
+
+    @keyframes routePanelFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .route-fade-in {
+      animation: routePanelFadeIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* ==========================================================================
+       行前確認清單自訂勾選框與平滑刪除線
+       ========================================================================== */
+    .checklist-item-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      background-color: rgba(253, 251, 247, 0.85);
+      border: 1px solid rgba(198, 176, 126, 0.34);
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.22s ease, border-color 0.22s ease;
+    }
+
+    .checklist-item-row:hover {
+      background-color: #FFFFFF;
+      border-color: rgba(198, 176, 126, 0.6);
+    }
+
+    .custom-check-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 17px;
+      height: 17px;
+      border-radius: 5px;
+      border: 1.25px solid var(--gold-champagne);
+      background-color: #FAF8F3;
+      flex-shrink: 0;
+      transition: all 0.22s ease;
+    }
+
+    .custom-check-icon {
+      width: 11px;
+      height: 11px;
+      color: #FFFFFF;
+      opacity: 0;
+      transform: scale(0.6);
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .checklist-text {
+      position: relative;
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: var(--ink-primary);
+      transition: color 0.25s ease;
+    }
+
+    .checklist-text::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 52%;
+      width: 0%;
+      height: 1px;
+      background-color: var(--clover-sage);
+      transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .checklist-item-row.is-checked .custom-check-box {
+      background-color: var(--selected-sage);
+      border-color: var(--selected-sage);
+    }
+
+    .checklist-item-row.is-checked .custom-check-icon {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .checklist-item-row.is-checked .checklist-text {
+      color: var(--ink-secondary);
+    }
+
+    .checklist-item-row.is-checked .checklist-text::after {
+      width: 100%;
+    }
+
+    /* ==========================================================================
+       純淨截圖預覽模式（Screenshot Mode）樣式切換
+       ========================================================================== */
+    body.screenshot-mode .top-action-bar {
+      opacity: 0;
+      pointer-events: none;
+      height: 0;
+      margin-bottom: 0;
+      overflow: hidden;
+    }
+
+    body.screenshot-mode .helper-subtitle {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* 截圖模式下，天候路線切換器收斂為僅顯示當前所選路線的純淨靜態徽章 */
+    body.screenshot-mode .route-switcher-pill {
+      display: inline-flex;
+      width: auto;
+      padding: 0;
+      background-color: transparent;
+      border-color: transparent;
+    }
+
+    body.screenshot-mode .route-tab-btn:not(.active) {
+      display: none;
+    }
+
+    body.screenshot-mode .route-tab-btn.active {
+      padding: 4px 12px;
+      background-color: rgba(126, 155, 129, 0.14);
+      border: 1px solid rgba(198, 176, 126, 0.55);
+      box-shadow: none;
+      cursor: default;
+    }
+
+    /* 截圖模式下隱藏未選中卡片的互動邊框突兀感，保持乾淨排版 */
+    body.screenshot-mode .lunch-choice-card:not(.is-selected) {
+      border-color: rgba(198, 176, 126, 0.35);
+      box-shadow: none;
+    }
+
+    body.screenshot-mode .checklist-item-row {
+      border-color: rgba(198, 176, 126, 0.25);
+    }
+
+    /* 底部浮動提示 Toast */
+    .screenshot-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%) translateY(14px);
+      z-index: 50;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      background-color: rgba(44, 49, 43, 0.9);
+      color: #FAF8F3;
+      border: 1px solid rgba(198, 176, 126, 0.5);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .screenshot-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <!-- 頂部操作列：純淨截圖預覽按鈕 -->
+    <div class="top-action-bar">
+      <button
+        type="button"
+        id="enterScreenshotBtn"
+        class="screenshot-trigger-btn"
+        onclick="enterScreenshotMode(event)"
+        aria-label="進入純淨截圖預覽模式"
+      >
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h2l1.5-2h7L17 7h2a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+          <circle cx="12" cy="13" r="3.2" />
+        </svg>
+        <span>純淨截圖預覽</span>
+      </button>
+    </div>
+
+    <!-- 主行程棉紙卡片（截圖模式下點擊卡片任意處可恢復操作列） -->
+    <main
+      id="itineraryCard"
+      class="ivory-stationery-card"
+      onclick="handleCardClick(event)"
+    >
+      <!-- 內嵌雙層香檳金極細框線 -->
+      <div class="double-gold-frame-outer" aria-hidden="true"></div>
+      <div class="double-gold-frame-inner" aria-hidden="true"></div>
+
+      <!-- 棉紙肌理噪點疊加層 -->
+      <div class="cotton-grain-overlay" aria-hidden="true"></div>
+
+      <!-- ======================================================================
+           1. 頁首主視覺區塊（簡約水彩暈染四葉幸運草、日期副標與主標題）
+           ====================================================================== -->
+      <header class="relative z-10 pt-7 pb-5 px-6 text-center">
+        <!-- 濃郁濕畫水彩暈染四葉幸運草 SVG（葉面增大、四葉緊密相依、多層次水彩滲色暈染） -->
+        <div class="clover-float mx-auto w-[154px] h-[142px] flex items-center justify-center mb-1">
+          <svg
+            viewBox="0 0 210 196"
+            class="w-full h-full overflow-visible"
+            role="img"
+            aria-label="水彩暈染四葉幸運草插畫"
+          >
+            <defs>
+              <!-- 放大且飽滿的心形幸運草葉瓣輪廓（葉肩寬潤，四葉旋轉後間距緊密相依） -->
+              <path
+                id="cloverLeafletShape"
+                d="M 0 -1.5 C -12 -13, -36 -28, -32 -49 C -28.5 -64, -10 -65, 0 -51.5 C 10 -65, 28.5 -64, 32 -49 C 36 -28, 12 -13, 0 -1.5 Z"
+              />
+
+              <!-- 葉片主輪廓裁切遮罩 -->
+              <clipPath id="cloverLeafletClip">
+                <use href="#cloverLeafletShape" />
+              </clipPath>
+
+              <!-- 紙面外擴水彩滲色濾鏡（模擬濕潤顏料自然滲入棉紙纖維的柔和暈邊） -->
+              <filter id="paperEdgeBleed" x="-45%" y="-45%" width="190%" height="190%">
+                <feTurbulence
+                  type="fractalNoise"
+                  baseFrequency="0.055"
+                  numOctaves="3"
+                  seed="14"
+                  result="paperTexture"
+                />
+                <feDisplacementMap
+                  in="SourceGraphic"
+                  in2="paperTexture"
+                  scale="4.2"
+                  xChannelSelector="R"
+                  yChannelSelector="G"
+                  result="displacedWash"
+                />
+                <feGaussianBlur in="displacedWash" stdDeviation="2.3" />
+              </filter>
+
+              <!-- 內部濕畫法顏料擴散濾鏡（Wet-on-wet 蓬鬆水痕交融） -->
+              <filter id="pigmentBloomBlur" x="-50%" y="-50%" width="200%" height="200%">
+                <feTurbulence
+                  type="fractalNoise"
+                  baseFrequency="0.042"
+                  numOctaves="3"
+                  seed="7"
+                  result="bloomNoise"
+                />
+                <feDisplacementMap
+                  in="SourceGraphic"
+                  in2="bloomNoise"
+                  scale="6.2"
+                  xChannelSelector="R"
+                  yChannelSelector="G"
+                  result="organicBloom"
+                />
+                <feGaussianBlur in="organicBloom" stdDeviation="4.4" />
+              </filter>
+
+              <!-- 水彩乾燥邊緣聚色水漬濾鏡（Water-mark / Backrun edge） -->
+              <filter id="waterRimFilter" x="-35%" y="-35%" width="170%" height="170%">
+                <feTurbulence
+                  type="fractalNoise"
+                  baseFrequency="0.068"
+                  numOctaves="3"
+                  seed="23"
+                  result="rimNoise"
+                />
+                <feDisplacementMap
+                  in="SourceGraphic"
+                  in2="rimNoise"
+                  scale="3.2"
+                  xChannelSelector="R"
+                  yChannelSelector="G"
+                  result="organicRim"
+                />
+                <feGaussianBlur in="organicRim" stdDeviation="1.45" />
+              </filter>
+
+              <!-- 柔和外暈水氣光環 -->
+              <filter id="outerHaloWash" x="-55%" y="-55%" width="210%" height="210%">
+                <feGaussianBlur stdDeviation="4.2" />
+              </filter>
+
+              <!-- 清透基底水彩漸層 A（深鼠尾草綠至晨霧薄荷） -->
+              <radialGradient id="baseWashA" cx="40%" cy="62%" r="68%">
+                <stop offset="0%" stop-color="#CBE0CC" stop-opacity="0.78" />
+                <stop offset="50%" stop-color="#8FAD92" stop-opacity="0.84" />
+                <stop offset="100%" stop-color="#658669" stop-opacity="0.9" />
+              </radialGradient>
+
+              <!-- 清透基底水彩漸層 B（柔和青瓷綠至暖苔橄欖綠） -->
+              <radialGradient id="baseWashB" cx="60%" cy="48%" r="68%">
+                <stop offset="0%" stop-color="#D7E8D8" stop-opacity="0.76" />
+                <stop offset="52%" stop-color="#9AB89D" stop-opacity="0.82" />
+                <stop offset="100%" stop-color="#6E8E72" stop-opacity="0.88" />
+              </radialGradient>
+
+              <!-- 葉柄水彩漸層 -->
+              <linearGradient id="wcStemGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#5E7D62" stop-opacity="0.88" />
+                <stop offset="56%" stop-color="#8FA07B" stop-opacity="0.8" />
+                <stop offset="100%" stop-color="#C6B07E" stop-opacity="0.64" />
+              </linearGradient>
+            </defs>
+
+            <!-- 纖細優雅的單筆水彩葉柄（隨放大葉面自然向下延伸） -->
+            <path
+              d="M 105 90 C 103 122, 96 152, 83 178"
+              fill="none"
+              stroke="url(#wcStemGrad)"
+              stroke-width="2.2"
+              stroke-linecap="round"
+            />
+
+            <!-- 四葉幸運草主體（置於 105, 86，四片大葉面緊密相依，各自呈現豐富濕畫暈染） -->
+            <g transform="translate(105, 86) rotate(-7)">
+
+              <!-- ============================================================
+                   葉瓣 1：左上葉瓣（-45°）— 葉基深橄欖沉澱與薄荷水暈交融
+                   ============================================================ -->
+              <g transform="rotate(-45)">
+                <!-- 紙面外擴柔霧水暈 -->
+                <use
+                  href="#cloverLeafletShape"
+                  transform="translate(-1.2, -1.5) scale(1.04)"
+                  fill="#9AB89D"
+                  opacity="0.4"
+                  filter="url(#outerHaloWash)"
+                />
+                <!-- 越界微滲水彩底層 -->
+                <use
+                  href="#cloverLeafletShape"
+                  fill="url(#baseWashA)"
+                  opacity="0.46"
+                  filter="url(#paperEdgeBleed)"
+                  class="watercolor-wash"
+                />
+                <!-- 裁切在心形葉瓣內的濃郁濕畫水彩層 -->
+                <g clip-path="url(#cloverLeafletClip)" class="watercolor-wash">
+                  <use href="#cloverLeafletShape" fill="url(#baseWashA)" />
+                  <!-- 葉基深橄欖綠顏料沉澱暈染 -->
+                  <ellipse cx="-2" cy="-18" rx="18" ry="20" fill="#4D6E52" opacity="0.54" filter="url(#pigmentBloomBlur)" />
+                  <!-- 左上瓣清透薄荷亮水痕暈開 -->
+                  <circle cx="-15" cy="-44" r="17" fill="#D5E7D6" opacity="0.74" filter="url(#pigmentBloomBlur)" />
+                  <!-- 右上瓣暖苔黃綠濕畫暈染 -->
+                  <ellipse cx="15" cy="-40" rx="16" ry="18" fill="#95AC7E" opacity="0.52" filter="url(#pigmentBloomBlur)" />
+                  <!-- 中段鼠尾草濃色水彩推積 -->
+                  <circle cx="3" cy="-32" r="14" fill="#638467" opacity="0.42" filter="url(#pigmentBloomBlur)" />
+                  <!-- 乾燥水漬邊緣聚色環 -->
+                  <use
+                    href="#cloverLeafletShape"
+                    fill="none"
+                    stroke="#4E6F53"
+                    stroke-width="3.2"
+                    opacity="0.52"
+                    filter="url(#waterRimFilter)"
+                  />
+                  <!-- 留白水彩葉脈高光 -->
+                  <path d="M 0 -7 Q -0.6 -26 0 -44" fill="none" stroke="#FAF8F3" stroke-width="1.05" stroke-linecap="round" opacity="0.62" />
+                </g>
+              </g>
+
+              <!-- ============================================================
+                   葉瓣 2：右上葉瓣（+45°）— 清透晨霧綠與弧緣濃郁鼠尾草暈染
+                   ============================================================ -->
+              <g transform="rotate(45)">
+                <use
+                  href="#cloverLeafletShape"
+                  transform="translate(1.2, -1.5) scale(1.04)"
+                  fill="#A5C0A7"
+                  opacity="0.4"
+                  filter="url(#outerHaloWash)"
+                />
+                <use
+                  href="#cloverLeafletShape"
+                  fill="url(#baseWashB)"
+                  opacity="0.46"
+                  filter="url(#paperEdgeBleed)"
+                  class="watercolor-wash"
+                />
+                <g clip-path="url(#cloverLeafletClip)" class="watercolor-wash">
+                  <use href="#cloverLeafletShape" fill="url(#baseWashB)" />
+                  <!-- 右側弧緣濃郁鼠尾草綠顏料堆積 -->
+                  <ellipse cx="16" cy="-37" rx="17" ry="22" fill="#547659" opacity="0.54" filter="url(#pigmentBloomBlur)" />
+                  <!-- 左側葉心清透水漾高光 -->
+                  <circle cx="-13" cy="-40" r="18" fill="#E1EFE2" opacity="0.76" filter="url(#pigmentBloomBlur)" />
+                  <!-- 葉柄交接處深綠暈染 -->
+                  <circle cx="0" cy="-16" r="14" fill="#5B7C60" opacity="0.5" filter="url(#pigmentBloomBlur)" />
+                  <!-- 乾燥水漬邊緣聚色環 -->
+                  <use
+                    href="#cloverLeafletShape"
+                    fill="none"
+                    stroke="#537558"
+                    stroke-width="3.1"
+                    opacity="0.5"
+                    filter="url(#waterRimFilter)"
+                  />
+                  <path d="M 0 -7 Q 0.6 -26 0 -44" fill="none" stroke="#FAF8F3" stroke-width="1.05" stroke-linecap="round" opacity="0.62" />
+                </g>
+              </g>
+
+              <!-- ============================================================
+                   葉瓣 3：右下葉瓣（+135°）— 雙色橄欖苔綠與青瓷水痕自然交融
+                   ============================================================ -->
+              <g transform="rotate(135)">
+                <use
+                  href="#cloverLeafletShape"
+                  transform="translate(1.2, -1.2) scale(1.04)"
+                  fill="#9AB89D"
+                  opacity="0.4"
+                  filter="url(#outerHaloWash)"
+                />
+                <use
+                  href="#cloverLeafletShape"
+                  fill="url(#baseWashA)"
+                  opacity="0.46"
+                  filter="url(#paperEdgeBleed)"
+                  class="watercolor-wash"
+                />
+                <g clip-path="url(#cloverLeafletClip)" class="watercolor-wash">
+                  <use href="#cloverLeafletShape" fill="url(#baseWashA)" />
+                  <!-- 中心向頂端擴散的深鼠尾草暈染 -->
+                  <ellipse cx="-8" cy="-34" rx="17" ry="21" fill="#4F7054" opacity="0.52" filter="url(#pigmentBloomBlur)" />
+                  <!-- 另一側淡青瓷高光水暈 -->
+                  <circle cx="14" cy="-43" r="16.5" fill="#D8E9D9" opacity="0.74" filter="url(#pigmentBloomBlur)" />
+                  <!-- 底部微暖香檳苔綠暈染 -->
+                  <ellipse cx="5" cy="-19" rx="14" ry="15" fill="#9FA87E" opacity="0.45" filter="url(#pigmentBloomBlur)" />
+                  <!-- 乾燥水漬邊緣聚色環 -->
+                  <use
+                    href="#cloverLeafletShape"
+                    fill="none"
+                    stroke="#4D6E52"
+                    stroke-width="3.2"
+                    opacity="0.52"
+                    filter="url(#waterRimFilter)"
+                  />
+                  <path d="M 0 -7 Q -0.5 -26 0 -44" fill="none" stroke="#FAF8F3" stroke-width="1.05" stroke-linecap="round" opacity="0.62" />
+                </g>
+              </g>
+
+              <!-- ============================================================
+                   葉瓣 4：左下葉瓣（-135°）— 輕盈薄荷水彩與心形雙瓣濃淡暈染
+                   ============================================================ -->
+              <g transform="rotate(-135)">
+                <use
+                  href="#cloverLeafletShape"
+                  transform="translate(-1.2, -1.2) scale(1.04)"
+                  fill="#A5C0A7"
+                  opacity="0.4"
+                  filter="url(#outerHaloWash)"
+                />
+                <use
+                  href="#cloverLeafletShape"
+                  fill="url(#baseWashB)"
+                  opacity="0.46"
+                  filter="url(#paperEdgeBleed)"
+                  class="watercolor-wash"
+                />
+                <g clip-path="url(#cloverLeafletClip)" class="watercolor-wash">
+                  <use href="#cloverLeafletShape" fill="url(#baseWashB)" />
+                  <!-- 葉尖心形雙瓣深淺交錯暈染 -->
+                  <circle cx="13" cy="-43" r="16.5" fill="#597B5E" opacity="0.52" filter="url(#pigmentBloomBlur)" />
+                  <circle cx="-14" cy="-42" r="17.5" fill="#DFEEE0" opacity="0.75" filter="url(#pigmentBloomBlur)" />
+                  <ellipse cx="-2" cy="-19" rx="15" ry="17" fill="#5B7C60" opacity="0.48" filter="url(#pigmentBloomBlur)" />
+                  <!-- 乾燥水漬邊緣聚色環 -->
+                  <use
+                    href="#cloverLeafletShape"
+                    fill="none"
+                    stroke="#527357"
+                    stroke-width="3.1"
+                    opacity="0.5"
+                    filter="url(#waterRimFilter)"
+                  />
+                  <path d="M 0 -7 Q 0.5 -26 0 -44" fill="none" stroke="#FAF8F3" stroke-width="1.05" stroke-linecap="round" opacity="0.62" />
+                </g>
+              </g>
+
+              <!-- 四葉緊密交匯的濕畫葉心：柔和顏料匯聚與極簡淡金花蕊點綴 -->
+              <circle cx="0" cy="0" r="6.5" fill="#5A7A5E" opacity="0.42" filter="url(#outerHaloWash)" class="watercolor-wash" />
+              <circle cx="0" cy="0" r="2.3" fill="#5B7B60" opacity="0.9" />
+              <circle cx="0" cy="0" r="1.15" fill="#C6B07E" opacity="0.95" />
+            </g>
+          </svg>
+        </div>
+
+        <!-- 香檳金日期膠囊副標 -->
+        <div class="inline-flex items-center justify-center px-3.5 py-1 rounded-full border border-champagne/60 bg-ivoryInner/90 mb-2.5">
+          <span class="font-garamond text-[12.5px] font-semibold tracking-[0.22em] text-champagneDeep">
+            2026 . 11 . 15 &nbsp;SUN
+          </span>
+        </div>
+
+        <!-- 主標題 -->
+        <h1 class="font-serifTC text-[21px] sm:text-[23px] font-semibold tracking-[0.08em] text-inkPrimary leading-snug">
+          11/15（日）桃園一日輕旅行
+        </h1>
+
+        <!-- 精緻香檳金中央裝飾分隔線 -->
+        <div class="flex items-center justify-center gap-2.5 mt-4">
+          <span class="h-[1px] w-14 bg-gradient-to-r from-transparent to-champagne/70"></span>
+          <span class="w-1.5 h-1.5 rotate-45 border border-champagne"></span>
+          <span class="h-[1px] w-14 bg-gradient-to-l from-transparent to-champagne/70"></span>
+        </div>
+      </header>
+
+      <!-- ======================================================================
+           2. 上午至午後初期固定行程時間軸
+           ====================================================================== -->
+      <section class="relative z-10 px-6 sm:px-7 pb-6">
+        <div class="flex items-center gap-2 mb-3.5 pb-1.5 border-b border-champagne/35">
+          <span class="w-1.5 h-1.5 rounded-full bg-cloverSage"></span>
+          <h2 class="font-serifTC text-[14px] font-semibold tracking-[0.08em] text-cloverOlive">
+            晨光啟程 &middot; 午後序曲
+          </h2>
+        </div>
+
+        <div class="relative pl-1">
+          <div class="timeline-connector" aria-hidden="true"></div>
+
+          <ul class="space-y-4">
+            <!-- 09:30 出發~ -->
+            <li class="relative pl-5">
+              <span class="absolute left-[2px] top-[5px] w-[8px] h-[8px] rounded-full bg-ivoryPaper border-[1.5px] border-champagne"></span>
+              <div>
+                <span class="serif-time text-[15px] text-champagneDeep block leading-none">09:30</span>
+                <p class="text-[13.5px] font-medium text-inkPrimary leading-snug mt-1">出發~</p>
+                <p class="text-[11.5px] text-inkSecondary leading-relaxed mt-0.5">開車前確認國五即時路況</p>
+              </div>
+            </li>
+
+            <!-- 11:30 抵達桃園青埔 -->
+            <li class="relative pl-5">
+              <span class="absolute left-[2px] top-[5px] w-[8px] h-[8px] rounded-full bg-ivoryPaper border-[1.5px] border-champagne"></span>
+              <div>
+                <span class="serif-time text-[15px] text-champagneDeep block leading-none">11:30</span>
+                <p class="text-[13.5px] font-medium text-inkPrimary leading-snug mt-1">抵達桃園青埔</p>
+                <p class="text-[11.5px] text-inkSecondary leading-relaxed mt-0.5">抵達餐廳周邊停放車輛</p>
+              </div>
+            </li>
+
+            <!-- 12:00 – 13:20 午餐時光 · 鍋物二選一 -->
+            <li class="relative pl-5">
+              <span class="absolute left-[2px] top-[5px] w-[8px] h-[8px] rounded-full bg-cloverSage border-[1.5px] border-cloverOlive"></span>
+              <div>
+                <div class="flex items-center justify-between gap-2">
+                  <span class="serif-time text-[15px] text-cloverOlive block leading-none">12:00 – 13:20</span>
+                  <span class="helper-subtitle text-[10.5px] text-inkSecondary tracking-wide">點擊選擇餐廳</span>
+                </div>
+                <p class="text-[13.5px] font-medium text-inkPrimary leading-snug mt-1 mb-2.5">
+                  午餐時光 &middot; 鍋物二選一
+                </p>
+
+                <!-- 並排等高互動式選擇卡片 -->
+                <div class="grid grid-cols-2 gap-2.5 items-stretch">
+                  <!-- Option 1: 超有肉涮涮屋 -->
+                  <button
+                    type="button"
+                    id="lunchCard1"
+                    class="lunch-choice-card"
+                    onclick="selectLunchOption('1', event)"
+                    aria-pressed="false"
+                  >
+                    <div class="flex items-start justify-between gap-1.5 w-full">
+                      <span class="lunch-card-title">超有肉涮涮屋</span>
+                      <span class="lunch-check-badge" aria-hidden="true">
+                        <svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5l3.5 3.5 7.5-8" />
+                        </svg>
+                      </span>
+                    </div>
+                    <p class="lunch-card-subtitle">
+                      肉量澎湃滿足・豐富自助吧
+                    </p>
+                  </button>
+
+                  <!-- Option 2: 老吳商行 -->
+                  <button
+                    type="button"
+                    id="lunchCard2"
+                    class="lunch-choice-card"
+                    onclick="selectLunchOption('2', event)"
+                    aria-pressed="false"
+                  >
+                    <div class="flex items-start justify-between gap-1.5 w-full">
+                      <span class="lunch-card-title">老吳商行</span>
+                      <span class="lunch-check-badge" aria-hidden="true">
+                        <svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5l3.5 3.5 7.5-8" />
+                        </svg>
+                      </span>
+                    </div>
+                    <p class="lunch-card-subtitle">
+                      質感復古裝潢・嚴選海陸鍋物
+                    </p>
+                  </button>
+                </div>
+              </div>
+            </li>
+
+            <!-- 13:20 – 13:45 前往 Xpark -->
+            <li class="relative pl-5">
+              <span class="absolute left-[2px] top-[5px] w-[8px] h-[8px] rounded-full bg-ivoryPaper border-[1.5px] border-champagne"></span>
+              <div>
+                <span class="serif-time text-[15px] text-champagneDeep block leading-none">13:20 – 13:45</span>
+                <p class="text-[13.5px] font-medium text-inkPrimary leading-snug mt-1">前往 Xpark</p>
+                <p class="text-[11.5px] text-inkSecondary leading-relaxed mt-0.5">預留停車及步行時間</p>
+              </div>
+            </li>
+
+            <!-- 13:45 – 14:00 入場準備 -->
+            <li class="relative pl-5">
+              <span class="absolute left-[2px] top-[5px] w-[8px] h-[8px] rounded-full bg-ivoryPaper border-[1.5px] border-champagne"></span>
+              <div>
+                <span class="serif-time text-[15px] text-champagneDeep block leading-none">13:45 – 14:00</span>
+                <p class="text-[13.5px] font-medium text-inkPrimary leading-snug mt-1">入場準備</p>
+                <p class="text-[11.5px] text-inkSecondary leading-relaxed mt-0.5">出示門票、確認入場</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           3. 午後天候路線切換器與動態時間軸
+           ====================================================================== -->
+      <section class="relative z-10 px-6 sm:px-7 pb-6">
+        <div class="mb-3.5 pb-1.5 border-b border-champagne/35">
+          <div class="flex items-center justify-between gap-2 mb-2.5">
+            <div class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-champagne"></span>
+              <h2 class="font-serifTC text-[14px] font-semibold tracking-[0.08em] text-cloverOlive">
+                午後路線 &middot; 依天候選擇
+              </h2>
+            </div>
+          </div>
+
+          <!-- 分段膠囊切換器 -->
+          <div id="routeSwitcherPill" class="route-switcher-pill w-full" role="tablist" aria-label="午後天候路線切換">
+            <button
+              type="button"
+              id="routeBtnA"
+              role="tab"
+              aria-selected="true"
+              class="route-tab-btn active"
+              onclick="switchWeatherRoute('A', event)"
+            >
+              晴天路線 A｜夕陽夜景
+            </button>
+            <button
+              type="button"
+              id="routeBtnB"
+              role="tab"
+              aria-selected="false"
+              class="route-tab-btn"
+              onclick="switchWeatherRoute('B', event)"
+            >
+              雨備路線 B｜室內彈性
+            </button>
+          </div>
+        </div>
+
+        <!-- 晴天路線 A 內容（預設顯示） -->
+        <article
+          id="routePanelA"
+          role="tabpanel"
+          class="route-fade-in rounded-2xl bg-ivoryInner/95 border border-champagne/55 p-4"
+        >
+          <div class="relative pl-1">
+            <div class="timeline-connector" aria-hidden="true"></div>
+            <ul class="space-y-3.5">
+              <li class="relative pl-5">
+                <span class="absolute left-[2px] top-[5px] w-[8px] h-[8px] rounded-full bg-cloverSage border-[1.5px] border-cloverOlive"></span>
+                <div>
+                  <span class="serif-time text-[14.5px] text-cloverOlive block leading-none">14:00 – 15:50</span>
+                  <p class="text-[13px] font-medium text-inkPrimary leading-snug mt-1">Xpark 水族館</p>
+                  <p class="text-[11.5px] text-inkSecondary leading-relaxed mt-0.5">晴天建議提前離場，預留山路車程</p>
+                </div>
+              </li>
+
+              <li class="relative pl-5">
+                <span class="absolute left-[2px] top-[5px] w-[8px] h-[8px] rounded-full bg-ivoryPaper border-[1.5px] border-champagne"></span>
+                <div>
+                  <span class="serif-time text-[14.5px] text-champagneDeep block leading-none">15:50 – 16:35</span>
+                  <p class="text-[13px] font-medium text-inkPrimary leading-snug mt-1">前往 151 高地</p>
+                  <p class="text-[11.5px] text-inkSecondary leading-relaxed mt-0.5">車程約 35–40 分鐘，提早卡位戶外景觀席</p>
+                </div>
+              </li>
+
+              <li class="relative pl-5">
+                <span class="absolute left-[2px] top-[5px] w-[8px] h-[8px] rounded-full bg-cloverSage border-[1.5px] border-cloverOlive"></span>
+                <div>
+                  <span class="serif-time text-[14.5px] text-cloverOlive block leading-none">16:35 – 18:30</span>
+                  <p class="text-[13px] font-medium text-inkPrimary leading-snug mt-1">151 高地景觀咖啡</p>
+                  <p class="text-[11.5px] text-inkSecondary leading-relaxed mt-0.5">欣賞夕陽（約 17:07）、夜景及飛機起降</p>
+                </div>
+              </li>
+
+              <li class="relative pl-5">
+                <span class="absolute left-[2px] top-[5px] w-[8px] h-[8px] rounded-full bg-ivoryPaper border-[1.5px] border-champagne"></span>
+                <div>
+                  <span class="serif-time text-[14.5px] text-champagneDeep block leading-none">18:30 – 19:20</span>
+                  <p class="text-[13px] font-medium text-inkPrimary leading-snug mt-1">輕食晚餐／小憩</p>
+                  <p class="text-[11.5px] text-inkSecondary leading-relaxed mt-0.5">點杯熱飲搭配鬆餅或炸物分食無負擔</p>
+                </div>
+              </li>
+
+              <li class="relative pl-5">
+                <span class="absolute left-[2px] top-[5px] w-[8px] h-[8px] rounded-full bg-cloverOlive border-[1.5px] border-cloverOlive"></span>
+                <div>
+                  <span class="serif-time text-[14.5px] text-cloverOlive block leading-none">19:20</span>
+                  <p class="text-[13px] font-medium text-inkPrimary leading-snug mt-1">開車返回宜蘭</p>
+                  <p class="text-[11.5px] text-inkSecondary leading-relaxed mt-0.5">結束美好旅程，順暢返程</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 雨備路線 B 內容（預設隱藏） -->
+        <article
+          id="routePanelB"
+          role="tabpanel"
+          class="hidden route-fade-in rounded-2xl bg-ivoryInner/95 border border-cloverSage/55 p-4"
+        >
+          <div class="relative pl-1">
+            <div class="timeline-connector" aria-hidden="true"></div>
+            <ul class="space-y-3.5">
+              <li class="relative pl-5">
+                <span class="absolute left-[2px] top-[5px] w-[8px] h-[8px] rounded-full bg-cloverSage border-[1.5px] border-cloverOlive"></span>
+                <div>
+                  <span class="serif-time text-[14.5px] text-cloverOlive block leading-none">14:00 – 16:20</span>
+                  <p class="text-[13px] font-medium text-inkPrimary leading-snug mt-1">Xpark 水族館</p>
+                  <p class="text-[11.5px] text-inkSecondary leading-relaxed mt-0.5">悠閒參觀約 2 小時 20 分鐘</p>
+                </div>
+              </li>
+
+              <li class="relative pl-5">
+                <span class="absolute left-[2px] top-[5px] w-[8px] h-[8px] rounded-full bg-ivoryPaper border-[1.5px] border-cloverSage"></span>
+                <div>
+                  <span class="serif-time text-[14.5px] text-champagneDeep block leading-none">16:30 – 19:00</span>
+                  <p class="text-[13px] font-medium text-inkPrimary leading-snug mt-1">華泰名品城逛街</p>
+                  <p class="text-[11.5px] text-inkSecondary leading-relaxed mt-0.5">經室內空橋前往，園區連廊移動備好折疊傘</p>
+                </div>
+              </li>
+
+              <li class="relative pl-5">
+                <span class="absolute left-[2px] top-[5px] w-[8px] h-[8px] rounded-full bg-cloverSage border-[1.5px] border-cloverOlive"></span>
+                <div>
+                  <span class="serif-time text-[14.5px] text-cloverOlive block leading-none">19:00 – 20:15</span>
+                  <p class="text-[13px] font-medium text-inkPrimary leading-snug mt-1">彈性輕食晚餐</p>
+                  <p class="text-[11.5px] text-inkSecondary leading-relaxed mt-0.5">
+                    視胃口現場決定（置地廣場「點點心」港點、華泰一期 3F 餐廳或順路「藏壽司」）
+                  </p>
+                </div>
+              </li>
+
+              <li class="relative pl-5">
+                <span class="absolute left-[2px] top-[5px] w-[8px] h-[8px] rounded-full bg-cloverOlive border-[1.5px] border-cloverOlive"></span>
+                <div>
+                  <span class="serif-time text-[14.5px] text-cloverOlive block leading-none">20:30</span>
+                  <p class="text-[13px] font-medium text-inkPrimary leading-snug mt-1">取車返回宜蘭</p>
+                  <p class="text-[11.5px] text-inkSecondary leading-relaxed mt-0.5">結束室內漫遊，開車返程</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <!-- ======================================================================
+           4. 行前確認清單（預設全數未勾選）
+           ====================================================================== -->
+      <section class="relative z-10 px-6 sm:px-7 pb-7">
+        <div class="flex items-center justify-between mb-3 pb-1.5 border-b border-champagne/40">
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-cloverOlive"></span>
+            <h2 class="font-serifTC text-[14px] font-semibold tracking-[0.08em] text-cloverOlive">
+              行前確認清單
+            </h2>
+          </div>
+          <span id="checklistCount" class="helper-subtitle font-garamond text-[13px] tracking-[0.12em] text-inkSecondary">
+            0 / 4
+          </span>
+        </div>
+
+        <ul class="space-y-2">
+          <li class="checklist-item-row" onclick="toggleChecklist(this, event)">
+            <span class="custom-check-box" aria-hidden="true">
+              <svg class="custom-check-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5l3.5 3.5 7.5-8" />
+              </svg>
+            </span>
+            <span class="checklist-text">早上9:30出發</span>
+          </li>
+
+          <li class="checklist-item-row" onclick="toggleChecklist(this, event)">
+            <span class="custom-check-box" aria-hidden="true">
+              <svg class="custom-check-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5l3.5 3.5 7.5-8" />
+              </svg>
+            </span>
+            <span class="checklist-text">確認午餐火鍋2選1</span>
+          </li>
+
+          <li class="checklist-item-row" onclick="toggleChecklist(this, event)">
+            <span class="custom-check-box" aria-hidden="true">
+              <svg class="custom-check-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5l3.5 3.5 7.5-8" />
+              </svg>
+            </span>
+            <span class="checklist-text">攜帶雨具、保暖衣物</span>
+          </li>
+
+          <li class="checklist-item-row" onclick="toggleChecklist(this, event)">
+            <span class="custom-check-box" aria-hidden="true">
+              <svg class="custom-check-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5l3.5 3.5 7.5-8" />
+              </svg>
+            </span>
+            <span class="checklist-text">帶著"開心"出門</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 卡片底部極簡幸運草印記 -->
+      <footer class="relative z-10 pb-7 px-6 text-center">
+        <div class="inline-flex flex-col items-center">
+          <svg class="w-4 h-4 mb-1.5 opacity-80" viewBox="0 0 40 40" aria-hidden="true">
+            <g fill="#7E9B81" opacity="0.72">
+              <circle cx="15" cy="15" r="4.8" />
+              <circle cx="25" cy="15" r="4.8" />
+              <circle cx="15" cy="24" r="4.8" />
+              <circle cx="25" cy="24" r="4.8" />
+            </g>
+            <path d="M20,20 Q19,29 15,35" stroke="#C6B07E" stroke-width="1.1" fill="none" stroke-linecap="round" />
+          </svg>
+          <p class="font-garamond italic text-[12px] tracking-[0.2em] text-inkSecondary">
+            Wishing You a Serene &amp; Joyful Day
+          </p>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- 純淨截圖模式底部提示 Toast -->
+  <div id="screenshotToast" class="screenshot-toast" role="status" aria-live="polite">
+    已進入純淨截圖模式，點擊卡片任意處恢復操作列
+  </div>
+
+  <script>
+    // 當前選定的午餐鍋物選項（null 表示尚未選擇）
+    let selectedLunchId = null;
+    // Toast 自動隱藏計時器
+    let toastTimer = null;
+
+    /**
+     * 互動式午餐鍋物二選一卡片切換
+     * @param {'1' | '2'} optionId
+     * @param {Event} [event]
+     */
+    function selectLunchOption(optionId, event) {
+      if (document.body.classList.contains('screenshot-mode')) {
+        exitScreenshotMode();
+        return;
+      }
+
+      if (event) {
+        event.stopPropagation();
+      }
+
+      try {
+        const card1 = document.getElementById('lunchCard1');
+        const card2 = document.getElementById('lunchCard2');
+        if (!card1 || !card2) return;
+
+        // 再次點擊同一張已選取卡片時，取消兩者選取狀態
+        if (selectedLunchId === optionId) {
+          selectedLunchId = null;
+        } else {
+          selectedLunchId = optionId;
+        }
+
+        card1.classList.remove('is-selected', 'is-dimmed');
+        card2.classList.remove('is-selected', 'is-dimmed');
+        card1.setAttribute('aria-pressed', 'false');
+        card2.setAttribute('aria-pressed', 'false');
+
+        if (selectedLunchId === '1') {
+          card1.classList.add('is-selected');
+          card1.setAttribute('aria-pressed', 'true');
+          card2.classList.add('is-dimmed');
+        } else if (selectedLunchId === '2') {
+          card2.classList.add('is-selected');
+          card2.setAttribute('aria-pressed', 'true');
+          card1.classList.add('is-dimmed');
+        }
+      } catch (err) {
+        console.error('Lunch selection error:', err);
+      }
+    }
+
+    /**
+     * 午後晴雨雙路線切換
+     * @param {'A' | 'B'} routeKey
+     * @param {Event} [event]
+     */
+    function switchWeatherRoute(routeKey, event) {
+      if (document.body.classList.contains('screenshot-mode')) {
+        exitScreenshotMode();
+        return;
+      }
+
+      if (event) {
+        event.stopPropagation();
+      }
+
+      try {
+        const btnA = document.getElementById('routeBtnA');
+        const btnB = document.getElementById('routeBtnB');
+        const panelA = document.getElementById('routePanelA');
+        const panelB = document.getElementById('routePanelB');
+        if (!btnA || !btnB || !panelA || !panelB) return;
+
+        if (routeKey === 'A') {
+          btnA.classList.add('active');
+          btnA.setAttribute('aria-selected', 'true');
+          btnB.classList.remove('active');
+          btnB.setAttribute('aria-selected', 'false');
+
+          panelB.classList.add('hidden');
+          panelA.classList.remove('hidden');
+          panelA.classList.remove('route-fade-in');
+          void panelA.offsetWidth;
+          panelA.classList.add('route-fade-in');
+        } else {
+          btnB.classList.add('active');
+          btnB.setAttribute('aria-selected', 'true');
+          btnA.classList.remove('active');
+          btnA.setAttribute('aria-selected', 'false');
+
+          panelA.classList.add('hidden');
+          panelB.classList.remove('hidden');
+          panelB.classList.remove('route-fade-in');
+          void panelB.offsetWidth;
+          panelB.classList.add('route-fade-in');
+        }
+      } catch (err) {
+        console.error('Route switch error:', err);
+      }
+    }
+
+    /**
+     * 行前確認清單勾選切換與進度計數更新
+     * @param {HTMLElement} rowEl
+     * @param {Event} [event]
+     */
+    function toggleChecklist(rowEl, event) {
+      if (document.body.classList.contains('screenshot-mode')) {
+        exitScreenshotMode();
+        return;
+      }
+
+      if (event) {
+        event.stopPropagation();
+      }
+
+      try {
+        rowEl.classList.toggle('is-checked');
+        const total = document.querySelectorAll('.checklist-item-row').length;
+        const checked = document.querySelectorAll('.checklist-item-row.is-checked').length;
+        const countEl = document.getElementById('checklistCount');
+        if (countEl) {
+          countEl.textContent = checked + ' / ' + total;
+        }
+      } catch (err) {
+        console.error('Checklist toggle error:', err);
+      }
+    }
+
+    /**
+     * 進入純淨截圖預覽模式
+     * @param {Event} [event]
+     */
+    function enterScreenshotMode(event) {
+      if (event) {
+        event.stopPropagation();
+      }
+
+      document.body.classList.add('screenshot-mode');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      const toast = document.getElementById('screenshotToast');
+      if (toast) {
+        toast.classList.add('show');
+        if (toastTimer) {
+          clearTimeout(toastTimer);
+        }
+        toastTimer = setTimeout(function () {
+          toast.classList.remove('show');
+        }, 2400);
+      }
+    }
+
+    /**
+     * 退出純淨截圖預覽模式並恢復所有控制項
+     */
+    function exitScreenshotMode() {
+      document.body.classList.remove('screenshot-mode');
+      const toast = document.getElementById('screenshotToast');
+      if (toast) {
+        toast.classList.remove('show');
+      }
+      if (toastTimer) {
+        clearTimeout(toastTimer);
+        toastTimer = null;
+      }
+    }
+
+    /**
+     * 截圖模式下點擊卡片任意處恢復操作列
+     * @param {Event} event
+     */
+    function handleCardClick(event) {
+      if (document.body.classList.contains('screenshot-mode')) {
+        event.stopPropagation();
+        exitScreenshotMode();
+      }
+    }
+  </script>
+</body>
+</html>
